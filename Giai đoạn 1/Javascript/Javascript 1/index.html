@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript_101</title>
+  </head>
+  <body>
+    <h1>Javascript_101</h1>
+    <h2>Bài 1 Các cách nhập tên và hiển thị cho người dùng</h2>
+    <h3>Cách 1 : Dùng input</h3>
+    <input type="text" id="myName" placeholder="Nhập tên của bạn" />
+    <button onclick="inputMyName()">Nhập</button>
+
+    <h1 id="showName"></h1>
+    <script>
+      function inputMyName() {
+        let name = document.getElementById("myName").value;
+        document.getElementById("showName").innerHTML = "Xin chào " + name;
+      }
+    </script>
+
+    <h3>Cách 2 và 3:</h3>
+    <!-- Xuât bằng document.writeln -->
+    <script>
+      let isMyName = prompt("Nhập tên của bạn: ");
+      // Xuất bằng alert
+      alert("Chào" + " " + isMyName);
+      // Xuất bằng document
+      document.writeln("Xin chào" + " " + isMyName);
+      // Xuất bằng console
+      console.log("Rất vui được gặp " + isMyName);
+    </script>
+  </body>
+</html>
