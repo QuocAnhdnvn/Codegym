@@ -1,0 +1,15 @@
+repository
+nơi chứa mã nguồn - chữa dữ liệu của git
+kho git
+
+tạo repository:
+local
+remote repo: kho online
+[git init] dùng để khởi tạo
+
+dùng mã [code .] để mở trình lập trình
+
+[git add .] đẩy tất cả các file vào trong một vùng nhớ.
+    hoặc [git add 'tên file']
+[git commit -m] đẩy từ vùng nhớ tạm thời vào local repo và đánh dấu một mốc lịch sử tại 
+git push origin master / git push -u origin main
