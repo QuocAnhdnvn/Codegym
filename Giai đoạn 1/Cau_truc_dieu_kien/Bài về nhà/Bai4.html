@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luyện tập cấu trúc điều kiện 01</title>
+  </head>
+  <body>
+    <h1>Luyện tập cấu trúc điều kiện 01 Bài 4</h1>
+    <p>
+      Nhập số thứ nhất
+      <input type="text" id="aValue" placeholder="Nhập số thứ nhất" />
+    </p>
+    <p>
+      Nhập số thứ hai
+      <input type="text" id="bValue" placeholder="Nhập số thứ hai" />
+    </p>
+    <p>
+      Nhập số thứ ba
+      <input type="text" id="cValue" placeholder="Nhập số thứ ba" />
+    </p>
+    <button onclick="kiemTra()">Kiểm tra</button>
+
+    <h2 id="showResult"></h2>
+    <script>
+      function kiemTra() {
+        // Lấy giá trị chuỗi người dùng nhập vào
+        let aText = document.getElementById("aValue").value;
+        let bText = document.getElementById("bValue").value;
+        let cText = document.getElementById("cValue").value;
+
+        // Ép kiểu sang số
+        let a = +aText;
+        let b = +bText;
+        let c = +cText;
+
+        // Mảng lưu các giá trị không hợp lệ
+        let khongHopLe = [];
+
+        // Kiểm tra từng giá trị
+        if (isNaN(a) || !Number.isInteger(a)) {
+          khongHopLe.push(`"${aText}"`);
+        }
+        if (isNaN(b) || !Number.isInteger(b)) {
+          khongHopLe.push(`"${bText}"`);
+        }
+        if (isNaN(c) || !Number.isInteger(c)) {
+          khongHopLe.push(`"${cText}"`);
+        }
+
+        // Nếu có ít nhất một giá trị không hợp lệ, hiển thị cảnh báo
+        if (khongHopLe.length > 0) {
+          document.getElementById("showResult").innerText =
+            "Giá trị " +
+            khongHopLe.join(", ") +
+            " không phải là số nguyên, vui lòng kiểm tra lại.";
+          return;
+        }
+
+        if (Math.max(a, b, c) == a) {
+          document.getElementById("showResult").innerText =
+            a + " là số lớn nhất";
+        } else if (Math.max(a, b, c) == b) {
+          document.getElementById("showResult").innerText =
+            b + " là số lớn nhất";
+        } else {
+          document.getElementById("showResult").innerText =
+            c + " là số lớn nhất";
+        }
+      }
+    </script>
+  </body>
+</html>

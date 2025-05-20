@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luyện tập cấu trúc điều kiện 01</title>
+  </head>
+  <body>
+    <h1>Luyện tập cấu trúc điều kiện 01 Bài 5</h1>
+    <h2>Xếp loại học lực của học sinh</h2>
+    <nav>
+      <div>
+        <h2>Nhập điểm</h2>
+        <p>
+          Nhập điểm kiểm tra
+          <input type="text" id="kiemTra" placeholder="Nhập điểm kiểm tra" />
+        </p>
+
+        <p>
+          Nhập điểm thi giữa kỳ
+          <input type="text" id="giuaKy" placeholder="Nhập điểm thi giữa kỳ" />
+        </p>
+        <p>
+          Nhập điểm thi cuối kỳ
+          <input type="text" id="cuoiKy" placeholder="Nhập điểm thi cuối kỳ" />
+        </p>
+        <button onclick="tinhdiemtong()">Kiểm tra</button>
+        <h2 id="showResult"></h2>
+      </div>
+    </nav>
+    <nav>
+      <div>
+        <script>
+          function tinhdiemtong() {
+            // Lấy giá trị chuỗi người dùng nhập vào
+            let kiemTraText = document.getElementById("kiemTra").value;
+            let giuaKyText = document.getElementById("giuaKy").value;
+            let cuoiKyText = document.getElementById("cuoiKy").value;
+
+            // Ép kiểu sang số
+            let kiemTra = +kiemTraText;
+            let giuaKy = +giuaKyText;
+            let cuoiKy = +cuoiKyText;
+
+            // Mảng lưu các giá trị không hợp lệ
+            let khongHopLe = [];
+
+            // Kiểm tra từng giá trị
+            if (isNaN(kiemTra) || kiemTra < 0 || kiemTra > 10) {
+              khongHopLe.push(`"${kiemTraText}"`);
+            }
+            if (isNaN(giuaKy) || giuaKy < 0 || giuaKy > 10) {
+              khongHopLe.push(`"${giuaKyText}"`);
+            }
+            if (isNaN(cuoiKy) || cuoiKy < 0 || cuoiKy > 10) {
+              khongHopLe.push(`"${cuoiKyText}"`);
+            }
+
+            // Nếu có ít nhất một giá trị không hợp lệ, hiển thị cảnh báo
+            if (khongHopLe.length > 0) {
+              document.getElementById("showResult").innerText =
+                "Giá trị " +
+                khongHopLe.join(", ") +
+                " không phải điểm, vui lòng kiểm tra lại.";
+              return;
+            }
+
+            // Tạm tính theo công thức điểm tổng kết  = (điểm kiểm tra + điểm giữa kỳ x 2 + điểm cuối kỳ  x 3)/6
+
+            let tb = (kiemTra + giuaKy * 2 + cuoiKy * 3) / 6;
+            if (tb >= 8) {
+              document.getElementById("showResult").innerText =
+                "Điểm tổng kết là " + tb.toFixed(2) + " đạt loại giỏi.";
+            } else if (tb >= 6.5) {
+              document.getElementById("showResult").innerText =
+                "Điểm tổng kết là " + tb.toFixed(2) + " đạt loại khá.";
+            } else if (tb >= 3.5) {
+              document.getElementById("showResult").innerText =
+                "Điểm tổng kết là " + tb.toFixed(2) + " đạt loại trung bình.";
+            } else {
+              document.getElementById("showResult").innerText =
+                "Điểm tổng kết là " +
+                tb.toFixed(2) +
+                " chưa đạt, yêu cầu học lại.";
+            }
+          }
+        </script>
+      </div>
+    </nav>
+  </body>
+</html>

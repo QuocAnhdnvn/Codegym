@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luyện tập cấu trúc điều kiện 01</title>
+  </head>
+  <body>
+    <h1>Luyện tập cấu trúc điều kiện 01 Bài 6</h1>
+    <h2>Tính hoa hồng nhận được dựa trên mức doanh số bán hàng.</h2>
+    <nav>
+      <div>
+        <h2>Nhập doanh số</h2>
+        <p>
+          Nhập doanh số
+          <input type="text" id="doanh_so" placeholder="Nhập doanh số" />
+        </p>
+        <button onclick="tinhhoahong()">Kiểm tra</button>
+        <h2 id="showResult"></h2>
+      </div>
+    </nav>
+    <nav>
+      <div>
+        <script>
+          function tinhhoahong() {
+            // Lấy giá trị chuỗi người dùng nhập vào
+            let doanh_soText = document.getElementById("doanh_so").value;
+
+            // Ép kiểu sang số
+            let doanh_so = +doanh_soText;
+
+            // Kiểm tra doanh số:
+            if (isNaN(doanh_so) || doanh_so < 0) {
+              document.getElementById("showResult").innerText =
+                "Giá trị " +
+                doanh_soText +
+                " không phải là doanh số, vui lòng kiểm tra lại.";
+              return;
+            }
+
+            // Tạm tính theo công thức:
+            // Doanh thu dưới 100: $20
+            // Doanh thu trên 100 dưới 500: $20 + 10% doanh thu
+            // Doanh thu trên 500: 15% doanh thu
+            let hoahong;
+            if (doanh_so < 100) {
+              hoahong = 20;
+            } else if (doanh_so < 500) {
+              hoahong = 20 + doanh_so * 0.1;
+            } else {
+              hoahong = doanh_so * 0.15;
+            }
+
+            document.getElementById("showResult").innerText =
+              "Tiền hoa hồng là $" + hoahong.toFixed(2);
+          }
+        </script>
+      </div>
+    </nav>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luyện tập cấu trúc điều kiện 01</title>
+  </head>
+  <body>
+    <h1>Luyện tập cấu trúc điều kiện 01 Bài 1</h1>
+    <p>
+      Nhập a
+      <input type="text" id="aValue" placeholder="Nhập a" />
+    </p>
+    <p>
+      Nhập b
+      <input type="text" id="bValue" placeholder="Nhập b" />
+    </p>
+    <button onclick="kiemTraChiaHet()">Kiểm tra</button>
+
+    <h2 id="showResult"></h2>
+    <script>
+      function kiemTraChiaHet() {
+        let a = +document.getElementById("aValue").value;
+        let b = +document.getElementById("bValue").value;
+
+        if (isNaN(a) || isNaN(b)) {
+          document.getElementById("showResult").innerText =
+            "a hoặc b không phải là số, vui lòng kiểm tra lại.";
+          return;
+        }
+
+        if (a % b === 0) {
+          document.getElementById("showResult").innerText = "a chia hết cho b.";
+        } else if (a % b != 0) {
+          document.getElementById("showResult").innerText =
+            "a không chia hết cho b.";
+        } else {
+          document.getElementById("showResult").innerText =
+            "Nhập lại giá trị cho a và b";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luyện tập cấu trúc điều kiện 01</title>
+  </head>
+  <body>
+    <h1>Luyện tập cấu trúc điều kiện 01 Bài 2</h1>
+    <p>
+      Nhập tuổi học sinh
+      <input type="text" id="student_age" placeholder="Nhập tuổi học sinh" />
+    </p>
+
+    <button onclick="kiemTra()">Kiểm tra</button>
+
+    <h2 id="showResult"></h2>
+    <script>
+      function kiemTra() {
+        let a = +document.getElementById("student_age").value;
+
+        if (isNaN(a) || a <= 0 || a > 150) {
+          document.getElementById("showResult").innerText =
+            "Không nhập đúng tuổi, vui lòng kiểm tra lại.";
+          return;
+        }
+
+        if ((a > 15) & (a < 18)) {
+          document.getElementById("showResult").innerText =
+            "Học sinh được học lớp 10";
+        } else {
+          document.getElementById("showResult").innerText =
+            "Học sinh không được học lớp 10";
+        }
+      }
+    </script>
+  </body>
+</html>
