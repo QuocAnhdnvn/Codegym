@@ -57,16 +57,39 @@
           return;
         }
 
-        if (Math.max(a, b, c) == a) {
-          document.getElementById("showResult").innerText =
-            a + " là số lớn nhất";
-        } else if (Math.max(a, b, c) == b) {
-          document.getElementById("showResult").innerText =
-            b + " là số lớn nhất";
-        } else {
-          document.getElementById("showResult").innerText =
-            c + " là số lớn nhất";
+        /* Cách 1 */
+        // if (Math.max(a, b, c) == a) {
+        //   document.getElementById("showResult").innerText =
+        //     a + " là số lớn nhất";
+        // } else if (Math.max(a, b, c) == b) {
+        //   document.getElementById("showResult").innerText =
+        //     b + " là số lớn nhất";
+        // } else {
+        //   document.getElementById("showResult").innerText =
+        //     c + " là số lớn nhất";
+        // }
+
+        /* Cách 2 */
+        // if (a > b && a > c) {
+        //   document.getElementById("showResult").innerText =
+        //     a + " là số lớn nhất";
+        // } else if (b > a && b > c) {
+        //   document.getElementById("showResult").innerText =
+        //     b + " là số lớn nhất";
+        // } else {
+        //   document.getElementById("showResult").innerText =
+        //     c + " là số lớn nhất";
+        // }
+
+        /* Cách 3 */
+        let max = a;
+        if (b > max) {
+          max = b;
         }
+        if (c > max) {
+          max = c;
+        }
+        console.log(max);
       }
     </script>
   </body>

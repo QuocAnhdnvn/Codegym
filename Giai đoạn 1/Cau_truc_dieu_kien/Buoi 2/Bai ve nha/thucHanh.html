@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luyện tập cấu trúc điều kiện 02</title>
+  </head>
+  <body>
+    <h1>Luyện tập cấu trúc điều kiện 02</h1>
+    <nav>
+      <h2>Bài 1: Chuyển từ độ C sang độ F.</h2>
+      <p>
+        Nhập độ C
+        <input type="text" id="doC" placeholder="Nhập độ C" />
+      </p>
+      <h2 id="showResult"></h2>
+      <button onclick="doiSangDoF()">Kiểm tra</button>
+
+      <script>
+        function doiSangDoF() {
+          let doCText = document.getElementById("doC");
+          let doC = +doCText;
+
+          if (isNan(doC) || doC < -158) {
+            document.getElementById("showResult").innerText =
+              "Giá trị " + doCText + " không phải độ C";
+            return;
+          }
+        }
+      </script>
+    </nav>
+  </body>
+</html>
