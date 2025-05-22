@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>In ra các số chẵn tu a đến b;</title>
+  </head>
+  <body>
+    <h1 id="showResult"></h1>
+    <script>
+      let a = +prompt("Nhập a");
+      let b = +prompt("Nhập b");
+
+      let result = "";
+
+      for (let y = a; y <= b; y++) {
+        if (y % 2 == 0) {
+          result += y + " ";
+        }
+      }
+
+      document.getElementById("showResult").innerText = result;
+    </script>
+  </body>
+</html>

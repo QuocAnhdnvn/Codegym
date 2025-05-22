@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đếm các số chia 5 dư 2 từ a đến b</title>
+  </head>
+  <body>
+    <!-- cấu trúc sử dụng for -->
+    <script>
+      let a = +prompt("Nhập a");
+      let b = +prompt("Nhập b");
+      let dem = 0;
+      for (let y = a; y <= b; y++) {
+        if (y % 5 == 2) {
+          dem = dem + 1;
+        }
+      }
+      console.log(dem);
+    </script>
+  </body>
+</html>

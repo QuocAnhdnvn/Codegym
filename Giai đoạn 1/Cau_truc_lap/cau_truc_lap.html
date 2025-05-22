@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vòng lặp</title>
+  </head>
+  <body>
+    <!-- cấu trúc sử dụng for -->
+    <script>
+      /* for(<khởi tạo biến đếm>; <điều kiện lặp/dừng>; <>;){khối lệnh thực thi}
+
+        Các bước chạy của vòng lặp for
+        B1: khởi tạo biến đếm.
+        B2: Xét điều kiện lặp (nếu true thì sang b3, false thì dừng lại)
+        B3: Thực thi khối lệnh
+        B4: Thực thi khối lệnh hậu tố ( Tăng hoặc giảm biến đếm )
+        B5: Quay lại bước 2
+        */
+      //   for (i = 1; i <= 5; i++) {
+      //     console.log("i");
+      //   }
+      /*
+      B1: Khởi tạo biến đếm i = 1
+      B2: Xét điều kiện (i <= 5; true => bước 3)
+      B3: Thực thi câu lệnh cốnle.log(i~1);
+      B4: Tăng biến đếm i: 1 ->2
+      B5: Xét lại điều kiện (i = 2; true => bước 3)
+      ...
+      Tăng đến i == 6
+      So sánh 6 <= 5 (false)
+
+      */
+
+      /*Tạo danh sách các bài tập*/
+      // In ra 100 chữ 'Hello'
+      //   for (i = 1; i <= 100; i++) {
+      //     console.log("Hello");
+      //   }
+
+      //   Nhập vào N từ prompt. In ra N lần chữ 'Hello'
+      //   let n = +prompt("Nhập N");
+      //   for (a = 1; a <= n; a++) {
+      //     console.log("Hello");
+      //   }
+
+      //   In ra cac số từ 1 đến 1000;
+      //   for (x = 1; x <= 1000; x++) {
+      //     console.log("x");
+      //   }
+
+      //   In ra cac số từ a đến b;
+      let a = +prompt("Nhập a");
+      let b = +prompt("Nhập b");
+
+      for (y = a; y <= b; y++) {
+        console.log("y");
+      }
+
+      /*
+      In ra 100 chữ 'Hello'
+Nhập vào N từ prompt. In ra N lần chữ 'Hello'
+In ra cac số từ 1 đến 1000;
+In ra cac số từ a đến b;
+In ra cac số từ a đến b, mỗi số trong 1 thẻ <h1>;
+In ra các số chẵn tu a đến b;
+In ra các số từ a đến b số chẵn trong h2, so le trong h1;
+Tính tích.
+Tính Tổng các số chia 5 dư 2 từ a đến b.
+Đếm các số chia 5 dư 2 từ a đến b
+In ra màn hình 0, 5 ,10,15, 20, ... 50.
+In ra  màn hình 10, 9, 8, 7, 6, ... 0.
+In ra màn hình 50, 45, 40, .. 0 
+In ra bảng cửu chương 5.
+*/
+
+      // Khi gặp  từ khoá break thì ngay lập tức vòng lặp dừng lại
+
+      //   continue: bỏ qua
+      //   làm luyện tập 1
+    </script>
+  </body>
+</html>
