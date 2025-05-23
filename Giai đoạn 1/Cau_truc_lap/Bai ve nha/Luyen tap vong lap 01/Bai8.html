@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luyện tập vòng lặp 01 Bài 8</title>
+    <style></style>
+  </head>
+  <body>
+    <!-- <h1>Game đoán số</h1> -->
+    <button onclick="game()">Bắt đầu</button>
+
+    <script>
+      function game() {
+        let min = +prompt("Nhập số nhỏ nhất");
+        let max = +prompt("Nhập số lớn nhất");
+        let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        for (let i = 1; i <= 3; i++) {
+          let doan = +prompt("Hãy đoán số");
+          if (doan == randomNumber) {
+            alert("Chúc mừng bạn đã đoán đúng");
+            break;
+          } else if (i == 3) {
+            alert("Bạn đã đoán sai cả 3 lần");
+          } else if (doan < randomNumber) {
+            alert("Số bạn đoán thấp hơn, hãy đoán lại");
+          } else {
+            alert("Số bạn đoán cao hơn, hãy đoán lại");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
