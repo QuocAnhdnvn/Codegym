@@ -7,13 +7,22 @@
   </head>
   <body>
     <script>
-      for (let i = 1; i <= 100000; i++) {
-        for (let j = 2; j <= 100000; j++) {
-          if (i == j) {
-            continue;
-          } else if (i % j == 0) {
+      let csnt = 0;
+      let number = 1;
+      while (csnt < 20) {
+        let count = 0;
+        for (let i = 1; i <= number; i++) {
+          // 1 => 10
+          if (number % i == 0) {
+            // tìm được số mà number chia hết (tìm ước number)
+            count++;
           }
         }
+        if (count == 2) {
+          console.log(number);
+          csnt++;
+        }
+        number++;
       }
     </script>
   </body>
