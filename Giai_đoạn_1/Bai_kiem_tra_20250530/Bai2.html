@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài kiểm tra - bài 2</title>
+  </head>
+  <body>
+    <h1>2.Các kiểu dữ liệu đã được học (Nêu ví dụ về giá trị của chúng).</h1>
+    <p>
+      Kiểu dữ liệu (Data Type) Khi khai báo biến và gán giá trị cho biến nghĩa
+      là xác định kiểu dữ liệu của biến đó.
+    </p>
+
+    <ul>
+      <li>
+        Kiểu dữ liệu cung cấp bộ giá trị mà một biểu thức (như biến, hàm, …) có
+        thể lấy giá trị của nó.
+      </li>
+      <li>
+        Khi khai báo biến và gán giá trị cho biến nghĩa là xác định kiểu dữ liệu
+        của biến đó.
+      </li>
+      <li>Các kiểu cơ bản cần nắm:</li>
+      <ul>
+        <li>Chuỗi - String: Khai báo trong nháy đơn hoặc nháy kép.</li>
+        <li>Số - Number: Sử dụng số nguyên hoặc số thập phân.</li>
+        <li>Boolean: Chỉ có hai giá trị true hoặc false.</li>
+        <li>
+          Null:Các giá trị không xác định không thuộc bất kỳ loại nào thuộc các
+          kiểu trên thì được quy về kiểu Null. Ý nghĩa của nó rất đặc biệt là
+          không có ý nghĩa gì, giá trị rỗng hoặc không xác định.
+        </li>
+        <li>
+          Undefined:Kiểu dữ liệu thể hiện biến chưa được có hay gán giá trị nào.
+        </li>
+        <li>Object : là kiểu đối tượng thuộc các kiểu dữ liệu trong JS</li>
+      </ul>
+    </ul>
+    <script>
+      //+ Chuỗi - String:
+      let name = "Hai";
+      let gender = "Nam";
+      //   + Số - Number: Sử dụng số nguyên hoặc số thập phân.
+
+      let a = 1;
+      let b = 1.5;
+      let c = -1;
+      /*Hai giá trị đặt biệt của kiểu số trong JS là NaN (not a number) và Infinity.
+      NaN value
+
+      Giá trị NaN được trả về khi thực hiện phép tính không hợp lệ, chẳng hạn chia một chuỗi cho một số (chuỗi không có nội dung là số). Khi đó kết quả phép tính là NaN.
+       */
+      let x = 100 / "Apple";
+      isNaN(x); // true
+      /*Infinity value
+      
+      Số vô cực dương (Infinity) và vô cực âm (-Infinity) được trả về khi kết quả biểu thức quá lớn so với giới hạn của JS. Infinity cũng được trả về nhờ phép chia một số cho 0, hoặc tính toán biểu thức có Infinity.
+       */
+      let y = 5;
+      let z = 5 / 0;
+      isFinite(y); // true
+      isFinite(z); // false
+      // + Boolean: Chỉ có hai giá trị true hoặc false.
+
+      let isHandsome = true;
+      let isCute = false;
+
+      /*object, có thể chứa thuộc tính (property) và phương thức (method). Object  được khởi tạo bằng từ khóa new và Object constructor.
+      Một số kiểu object thường gặp là mảng (array) ,function , Date  */
+      let obj = new Object();
+      let arr = [1, "Tooi", true];
+      function dad() {}
+    </script>
+  </body>
+</html>

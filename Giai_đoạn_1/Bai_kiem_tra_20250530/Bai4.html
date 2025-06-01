@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài kiểm tra - bài 4</title>
+  </head>
+  <body>
+    <h1>4. Có những cách nào để hiển thị chữ hello ra từ JS (kèm ví dụ)</h1>
+    <h2>Có 3 cách mà mình biết</h2>
+    <ol>
+      <li>Xuất bằng bảng thông báo alert</li>
+      <li>Xuất bằng console</li>
+      <li>
+        Xuất bằng document: Khi xuất bằng document có nhiều phương thức khác
+        nhau
+      </li>
+      <ul>
+        <li>Xuất trực tiếp bằng document.writeln</li>
+        <li>Xuất thông qua một element khác: document.getElementById</li>
+      </ul>
+    </ol>
+
+    <script>
+      // Cách 1:
+      alert("hello");
+
+      //   Cách 2:
+      console.log("hello");
+
+      // Cách 3.1:
+      document.writeln("<h1>" + "hello" + "</h1>");
+    </script>
+
+    <!-- Cách 3.2 -->
+    <h2 id="show"></h2>
+    <script>
+      document.getElementById("show").innerHTML = "hello";
+    </script>
+  </body>
+</html>

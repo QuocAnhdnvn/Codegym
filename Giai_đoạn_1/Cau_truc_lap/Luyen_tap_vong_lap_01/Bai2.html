@@ -21,11 +21,17 @@
     <h1>Bài làm:</h1>
 
     <script>
-      let a = +prompt("Nhập nhiệt độ hiện tại");
-      if (a > 100) {
-        document.write("<h2>" + "Hãy hạ nhiệt độ xuống" + "</h2>");
-      } else if (a < 20) {
-        document.write("Hãy tăng nhiệt độ lên.");
+      let a;
+      while (true) {
+        a = +prompt("Nhập nhiệt độ hiện tại");
+        if (a > 100) {
+          alert("Hãy hạ nhiệt độ xuống");
+        } else if (a < 20) {
+          alert("Hãy tăng nhiệt độ lên.");
+        } else {
+          alert("Đã nhập đúng rồi");
+          break;
+        }
       }
     </script>
   </body>

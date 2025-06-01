@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài kiểm tra - bài 4</title>
+  </head>
+  <body>
+    <h1>5. Có những cách nào để nhập vào biến a với JS (kèm ví dụ)</h1>
+    <script>
+      // Cách 1: Nhập trực tiếp
+      let a = 1;
+      // Cách 2: nhập bằng prompt
+      let b = prompt("Hãy nhập biến B");
+    </script>
+
+    <!--Cách 3: nhập bằng ô input  -->
+    <input type="text" id="nhap" placeholder="Nhập tên của bạn" />
+    <button onclick="inputNhap()">Nhập</button>
+
+    <h1 id="show"></h1>
+    <script>
+      function inputNhap() {
+        let c = document.getElementById("nhap").value;
+        document.getElementById("show").innerHTML = c;
+      }
+    </script>
+
+    <!-- Cách 4 : Nhập bằng vòng lặp -->
+    <script>
+      let csnt = 0;
+      let number = 1;
+      while (csnt < 20) {
+        let count = 0;
+        for (let i = 1; i <= number; i++) {
+          // 1 => 10
+          if (number % i == 0) {
+            // tìm được số mà number chia hết (tìm ước number)
+            count++;
+          }
+        }
+        if (count == 2) {
+          console.log(number);
+          csnt++;
+        }
+        number++;
+      }
+    </script>
+  </body>
+</html>
