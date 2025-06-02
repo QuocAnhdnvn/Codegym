@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài kiểm tra - bài 17</title>
+  </head>
+  <body>
+    <p style="font-weight: bold; font-size: 24px">
+      17. Tính trung bình cộng các số chia 5 dư 2 các phần tử trong mảng.
+    </p>
+    <h2>Hãy nhập mảng</h2>
+    <input type="text" id="a" placeholder="Nhập mảng" />
+
+    <button onclick="inputa()">Nhập</button>
+    <div id="hienthi"></div>
+    <script>
+      function inputa() {
+        let a = document.getElementById("a").value.split(",").map(Number);
+        let counts = 0;
+        let sum = 0;
+        let ave;
+        for (let i = 0; i < a.length; i++) {
+          if (isNaN(a[i])) continue;
+          if (a[i] % 5 == 2) {
+            counts++;
+            sum += a[i];
+          }
+          ave = sum / counts;
+          document.getElementById(
+            "hienthi"
+          ).innerHTML = `<h1>Giá trị trung bình cộng là ${ave} </h1>`;
+        }
+      }
+    </script>
+  </body>
+</html>

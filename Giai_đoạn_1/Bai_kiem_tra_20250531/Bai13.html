@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài kiểm tra - bài 13</title>
+  </head>
+  <body>
+    <p style="font-weight: bold; font-size: 24px">
+      13. In ra các số từ a đến b (nâng cao a, b nhập từ input).
+    </p>
+    <h2>Hãy nhập a và b</h2>
+    <input type="text" id="a" placeholder="Nhập a" />
+    <br />
+    <input type="text" id="b" placeholder="Nhập b" />
+    <br />
+    <button onclick="inputab()">Nhập</button>
+    <div id="hienthi"></div>
+    <script>
+      function inputab() {
+        let avalue = document.getElementById("a").value;
+        let bavalue = document.getElementById("b").value;
+        let a = +avalue;
+        let b = +bavalue;
+        if (isNaN(a) || !Number.isInteger(a)) {
+          document.getElementById(
+            "hienthi"
+          ).innerHTML = `<p>${avalue} không phải là số nguyên, vui lòng kiểm tra lại.</p>`;
+          return;
+        }
+        if (isNaN(b) || !Number.isInteger(b)) {
+          document.getElementById(
+            "hienthi"
+          ).innerHTML = `<p>${bavalue} không phải là số nguyên, vui lòng kiểm tra lại.</p>`;
+          return;
+        }
+
+        let output = "";
+        if (a > b) {
+          for (let i = b; i <= a; i++) {
+            output += `<p>${i}</p>`;
+          }
+        } else {
+          for (let j = a; j <= b; j++) {
+            output += `<p>${j}</p>`;
+          }
+        }
+        document.getElementById("hienthi").innerHTML = output;
+      }
+    </script>
+  </body>
+</html>

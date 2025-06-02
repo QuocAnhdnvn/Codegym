@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài kiểm tra - bài 22</title>
+  </head>
+  <body>
+    <p style="font-weight: bold; font-size: 24px">
+      22. Tìm các vị trí của min trong mảng.
+    </p>
+
+    <script>
+      let array = [1, 7, 5, 9, 2, 6];
+      let min = Infinity;
+      let vitri;
+
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] < min) {
+          min = array[i];
+          vitri = i;
+        }
+      }
+      if (min == Infinity) {
+        document.write("<h2>" + "Không có số nhỏ nhất" + "</h2>");
+      }
+      document.write("<h2>" + "Vị trí số nhỏ nhất là : " + vitri + "</h2>");
+    </script>
+  </body>
+</html>

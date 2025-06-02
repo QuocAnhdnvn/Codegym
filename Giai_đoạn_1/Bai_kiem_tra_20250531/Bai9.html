@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài kiểm tra - bài 9</title>
+  </head>
+  <body>
+    <p style="font-weight: bold; font-size: 24px">
+      9. Nhập vào a, b. Nếu a > b in ra tổng, nếu a < b in ra tích, nếu a = b in
+      ra 'a=b'
+    </p>
+    <h2>Hãy nhập a và b</h2>
+    <input type="text" id="a" placeholder="Nhập a" />
+    <input type="text" id="b" placeholder="Nhập b" />
+    <button onclick="inputab()">Nhập</button>
+    <h2 id="hienthi"></h2>
+
+    <script>
+      function inputab() {
+        let a = +document.getElementById("a").value;
+        let b = +document.getElementById("b").value;
+        if (isNaN(a)) {
+          document.getElementById("hienthi").innerHTML =
+            "Bạn đã nhập sai số a, vui lòng nhập lại";
+        } else if (isNaN(b)) {
+          document.getElementById("hienthi").innerHTML =
+            "Bạn đã nhập sai số b, vui lòng nhập lại";
+        } else if (a > b) {
+          let tong = a + b;
+          document.getElementById("hienthi").innerHTML =
+            "Vì a > b nên tổng của a và b là: " + tong;
+        } else if (a < b) {
+          let tich = a + b;
+          document.getElementById("hienthi").innerHTML =
+            "Vì a < b nên tích của a và b là: " + tich;
+        } else {
+          document.getElementById("hienthi").innerHTML = "a = b";
+        }
+      }
+    </script>
+  </body>
+</html>

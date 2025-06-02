@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài kiểm tra - bài 12</title>
+  </head>
+  <body>
+    <p style="font-weight: bold; font-size: 24px">
+      12. Nhập vào N từ prompt. In ra N lần chữ 'Hello'.
+    </p>
+
+    <script>
+      let n = +prompt("Hãy nhập số N");
+      if (isNaN(n) || !Number.isInteger(n)) {
+        document.write(
+          "<p>" + "N không phải là số nguyên, vui lòng kiểm tra lại." + "</p>"
+        );
+      }
+
+      for (let i = 1; i <= n; i++) {
+        document.write("<p>" + "Hello" + "</p>");
+      }
+    </script>
+  </body>
+</html>

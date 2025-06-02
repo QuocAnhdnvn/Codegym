@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài kiểm tra - bài 8</title>
+  </head>
+  <body>
+    <p style="font-weight: bold; font-size: 24px">
+      8. Nhập vào tuổi trong biến age, in ra 'Đủ tuổi' age nếu age >= 18.
+    </p>
+    <h2>Kiểm tra tuổi</h2>
+    <input type="text" id="age" placeholder="Nhập tuổi của bạn" />
+    <button onclick="inputage()">Nhập</button>
+    <h2 id="hienthi"></h2>
+
+    <script>
+      function inputage() {
+        let age = +document.getElementById("age").value;
+
+        if (isNaN(age) || age <= 0) {
+          document.getElementById("hienthi").innerHTML =
+            "Bạn đã nhập sai số tuổi, vui lòng nhập lại";
+        } else if (age >= 18) {
+          document.getElementById("hienthi").innerHTML = "Đủ tuổi";
+        } else {
+          document.getElementById("hienthi").innerHTML = "Bạn chưa đủ tuổi";
+        }
+      }
+    </script>
+  </body>
+</html>

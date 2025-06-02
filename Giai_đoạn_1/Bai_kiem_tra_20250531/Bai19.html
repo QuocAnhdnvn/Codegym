@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài kiểm tra - bài 19</title>
+  </head>
+  <body>
+    <p style="font-weight: bold; font-size: 24px">
+      19. Nhập vao a, tìm vị trí của a trong mảng.
+    </p>
+    <h2>Hãy nhập mảng</h2>
+    <input type="text" id="arr" placeholder="Nhập mảng" />
+    <input type="text" id="a" placeholder="Nhập a" />
+    <button onclick="inputarr()">Nhập</button>
+    <div id="hienthi"></div>
+    <script>
+      function inputarr() {
+        let arr = document.getElementById("arr").value.split(",").map(Number);
+        let a = document.getElementById("a").value;
+
+        let vitri;
+        let output = "";
+        for (let i = 0; i < arr.length; i++) {
+          if (a == isNaN(arr[i]));
+          vitri++;
+          output += `<h2>${a[i]}</h2>`;
+        }
+
+        if (vitri > 0) {
+          document.getElementById("hienthi").innerHTML =
+            `<h2>a xuất hiện tại vị trí sau trong mảng: </h2>` + output;
+        } else {
+          document.getElementById(
+            "hienthi"
+          ).innerHTML = `<h2>a không có trong mảng </h2>`;
+        }
+      }
+    </script>
+  </body>
+</html>
