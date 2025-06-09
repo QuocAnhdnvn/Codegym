@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài 2: Bài tập Sinh Viên</title>
+  </head>
+  <body>
+    <p style="font-weight: bold; font-size: 24px">
+      Bài 2: Bài tập Sinh Viên: Viết một lớp Student để quản lý thông tin sinh
+      viên gồm các thuộc tính như tên, tuổi, một mảng điểm số. Tạo các phương
+      thức cho phép thay đổi thông tin sinh viên, hiển thị thông tin sinh viên
+      và tính trung bình điểm của sinh viên.
+    </p>
+    <h2>Hãy nhập thông tin học sinh</h2>
+    <div>
+      <h3>Học sinh thứ nhất</h3>
+      <input type="text" id="ten1" placeholder="Nhập tên học sinh thứ nhất" />
+      <br />
+      <input type="text" id="tuoi1" placeholder="Nhập tuổi học sinh" />
+      <br />
+      <input type="text" id="diem1" placeholder="Nhập điểm học sinh" />
+      <br />
+      <button onclick="nhap1()">Nhap</button>
+    </div>
+
+    <div>
+      <h3>Học sinh thứ hai</h3>
+      <input type="text" id="ten2" placeholder="Nhập tên học sinh thứ hai" />
+      <br />
+      <input type="text" id="tuoi2" placeholder="Nhập tuổi học sinh thứ hai" />
+      <br />
+      <input type="text" id="diem2" placeholder="Nhập điểm học sinh thứ hai" />
+      <br />
+      <button onclick="nhap2()">Nhap</button>
+    </div>
+
+    <br />
+    <button onclick="tinhToan()">Tính</button>
+    <div id="hienthi"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

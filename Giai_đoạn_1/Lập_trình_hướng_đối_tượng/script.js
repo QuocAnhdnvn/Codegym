@@ -1,45 +1,31 @@
-class HCN {
-  dai;
-  rong;
-
-  constructor(nhapDai, nhapRong) {
-    this.dai = nhapDai;
-    this.rong = nhapRong;
+let output;
+class Temperature {
+  doC;
+  constructor(nhapDoC) {
+    this.doC = nhapDoC;
   }
-
-  chuVi() {
-    let cv = (this.dai + this.rong) * 2;
-    return `<h2>Chu vi là : ${cv}</h2>`;
-    // console.log("Chu vi là: ", cv);
+  DoK() {
+    let doK = this.doC + 273;
+    return doK;
   }
-
-  dienTich() {
-    let dientich = this.dai * this.rong;
-    return `<h2>Diện tích là : ${dientich}</h2>`;
-    // console.log("Diện tích là: ", dientich);
+  DoF() {
+    let doF = this.doC * 1.8 + 32;
+    return doF;
   }
 }
 
 function tinhToan() {
-  let nhapDai = parseFloat(document.getElementById("dai").value.trim());
-  let nhapRong = parseFloat(document.getElementById("rong").value.trim());
-
-  if (isNaN(nhapDai) || isNaN(nhapRong)) {
-    document.getElementById("hienthi").innerHTML = "";
-    return;
-  }
-  if (
-    !Number.isInteger(nhapDai) ||
-    !Number.isInteger(nhapRong) ||
-    nhapDai <= 0 ||
-    nhapRong <= 0
-  ) {
+  let nhapDoC = parseFloat(document.getElementById("doC").value.trim());
+  if (isNaN(nhapDoC) || nhapDoC <= -273) {
     document.getElementById(
       "hienthi"
-    ).innerHTML = `<h2>Vui lòng nhập số nguyên dương lớn hơn 0.</h2>`;
+    ).innerHTML = `<Br><h2>Nhập sai giá trị độ C, hãy nhập lại</h2>`;
     return;
   }
-
-  let s1 = new HCN(nhapDai, nhapRong);
-  document.getElementById("hienthi").innerHTML = s1.chuVi() + s1.dienTich();
+  let s1 = new Temperature(nhapDoC);
+  document.getElementById("hienthi").innerHTML = `
+  <h3>Nhiệt độ theo độ K là ${s1.DoK()}.</h3>
+  <Br>
+  <h3>Nhiệt độ theo độ F là ${s1.DoF()}.</h3>
+  `;
 }
