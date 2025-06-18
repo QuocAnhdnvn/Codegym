@@ -1,0 +1,18 @@
+đăng ký, đăng nhập
+
+class mới
+
+lưu loại sản phẩn category vào sản phẩm
+value date dữ liệu
+
+úp nhiều ảnh
+
+có một menu tổng
+
+khi lưu dữ liệu
+
+check ID không được trùng
+
+lưu lại thông tin đăng nhập người dùng để khi back
+tác giao diện
+không cho trùng ID
