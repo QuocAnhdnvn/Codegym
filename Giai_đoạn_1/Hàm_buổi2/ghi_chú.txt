@@ -1,0 +1,1 @@
+Lập trình Beck end cũng có thể dùng JS = noteJS (tự tìm hiểu thêm)

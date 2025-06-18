@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thế giới di động</title>
+  </head>
+  <body>
+    <h2>Add new Product</h2>
+    <input
+      type="text"
+      placeholder="New Product"
+      id="NewProduct"
+      list="suggestions"
+    />
+    <datalist id="suggestions">
+      <option value="iPhone"></option>
+      <option value="Samsung"></option>
+      <option value="Oppo"></option>
+      <option value="Xiaomi"></option>
+      <option value="Realme"></option>
+      <option value="Nokia"></option>
+      <option value="Vivo"></option>
+      <option value="Asus"></option>
+      <option value="Sony"></option>
+      <option value="Huawei"></option>
+    </datalist>
+    <button onclick="addProduct()">Add</button>
+
+    <h2>Display All Product</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody id="data"></tbody>
+    </table>
+
+    <!-- Link tới file Script.js đã chứa toàn bộ code JavaScript -->
+    <script src="Script.js"></script>
+  </body>
+</html>

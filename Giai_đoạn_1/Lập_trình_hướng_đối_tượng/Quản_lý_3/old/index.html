@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shọp PI</title>
+  </head>
+
+  <body>
+    <center>
+      <h1>Quản lý sản phẩm</h1>
+      <button onclick="navigateToHome()">Trang chủ</button>
+      <button onclick="navigateToAdd()">Thêm mới</button>
+
+      <div id="ui"></div>
+    </center>
+  </body>
+  <!-- Tạo mẫu cho các sản phẩm (class Product) -->
+  <script src="Product.js"></script>
+
+  <!-- Tạo mẫu cho các store (class Store) -->
+  <script src="Store.js"></script>
+
+  <!-- Như 1 FE (xử lý logic) tương tác trực tiếp với giao diện -->
+  <script src="index.js"></script>
+</html>

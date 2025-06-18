@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thế giới di động</title>
+  </head>
+  <body>
+    <h1>search</h1>
+    <input
+      type="text"
+      placeholder="search name"
+      id="name-search"
+      oninput="search"
+    />
+
+    <h2>Save Product</h2>
+    <input
+      type="text"
+      placeholder="New Product"
+      id="NewProduct"
+      list="suggestions"
+    />
+    <div id="action">
+      <button onclick="addProduct()">Add</button>
+    </div>
+
+    <h2>Display All Product</h2>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody id="data"></tbody>
+    </table>
+
+    <script src="index.js"></script>
+  </body>
+</html>
