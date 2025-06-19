@@ -4,18 +4,110 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quản lý sinh viên</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+
+    <link href="style.css" rel="stylesheet" />
   </head>
   <body>
-    <center>
-      <h1>Phòng công tác sinh viên</h1>
-      <button onclick="navigateToHome()">Trang chủ</button>
-      <button onclick="navigateToAdd()">Thêm mới</button>
+    <!-- Header với nút đăng nhập bên trái -->
+    <header
+      class="bg-white p-2 d-flex align-items-center justify-content-between border-bottom"
+    >
+      <div></div>
+      <div id="headerRight">
+        <button class="btn btn-outline-primary me-2" onclick="showLoginModal()">
+          <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
+        </button>
+      </div>
+    </header>
 
-      <div id="ui"></div>
-    </center>
+    <div class="w-100">
+      <img
+        src="img/logo.png"
+        alt="Logo trường"
+        class="img-fluid w-100"
+        style="max-height: 150px; object-fit: contain; background: #fff"
+      />
+    </div>
+
+    <h1 class="text-center my-3" style="font-size: 2rem">
+      Phòng công tác sinh viên
+    </h1>
+
+    <div id="mainApp" style="display: none">
+      <!-- Thanh menu -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container justify-content-center">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <button class="btn btn-link nav-link" onclick="navigateToHome()">
+                Trang chủ
+              </button>
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-link nav-link" onclick="navigateToAdd()">
+                Thêm mới
+              </button>
+            </li>
+            <!-- Thêm các menu khác nếu cần -->
+          </ul>
+        </div>
+      </nav>
+      <center><div id="ui"></div></center>
+    </div>
+
+    <div
+      id="loginModal"
+      class="position-fixed top-0 start-0 w-100 h-100 justify-content-center align-items-center"
+      style="background: rgba(0, 0, 0, 0.3); display: none; z-index: 1050"
+    >
+      <div class="card p-4">
+        <h5 class="mb-3 text-center">Đăng nhập</h5>
+        <div class="mb-3">
+          <label for="loginID" class="form-label">ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="loginID"
+            autocomplete="username"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="loginPass" class="form-label">Mật khẩu</label>
+          <input
+            type="password"
+            class="form-control"
+            id="loginPass"
+            autocomplete="current-password"
+          />
+        </div>
+        <div class="d-grid mb-2">
+          <button class="btn btn-primary" onclick="handleLogin()">
+            Đăng nhập
+          </button>
+        </div>
+        <button class="btn btn-link text-danger p-0" onclick="hideLoginModal()">
+          Đóng
+        </button>
+        <div
+          id="loginError"
+          class="text-danger mt-2"
+          style="display: none"
+        ></div>
+      </div>
+    </div>
   </body>
 
+  <script src="login.js"></script>
   <script src="Student.js"></script>
   <script src="grade.js"></script>
   <script src="Index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </html>

@@ -16,3 +16,7 @@ check ID không được trùng
 lưu lại thông tin đăng nhập người dùng để khi back
 tác giao diện
 không cho trùng ID
+
+admin có thể tạo tài khoản cho học sinh
+admin tạo khoá học
+SV đăng ký khoá học
