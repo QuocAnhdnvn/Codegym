@@ -90,11 +90,24 @@ function addStudent() {
   let list = myGrade.getListStudent();
 
   let id = list.length + 1;
-  let name = document.getElementById("name").value;
+  //   let name = document.getElementById("name").value;
   let faculty = document.getElementById("faculty").value;
   let grade = document.getElementById("grade").value;
   let score = document.getElementById("score").value;
   let avatar = document.getElementById("avatar").value;
+
+  let name = "";
+  for (let i = 0; i < accounts.length; i++) {
+    if (accounts[i].id === checkAccId) {
+      name = accounts[i].name;
+      break;
+    }
+  }
+
+  if (!name) {
+    alert("Không tìm thấy tên cho tài khoản này!");
+    return;
+  }
   let p = new Student(id, name, faculty, grade, score, avatar);
   myGrade.add(p);
   navigateToHome();
@@ -147,16 +160,130 @@ function navigateToUpdate(id) {
 
 function navigateToAdd() {
   document.getElementById("ui").innerHTML = `
-    <h2>Lưu thông tin học sinh</h2>
-    <div>
-      <input type="text" placeholder="Name" id="name"><br><br>
-      <input type="text" placeholder="Faculty" id="faculty"><br><br>
-      <input type="text" placeholder="Grade" id="grade"><br><br>
-      <input type="number" placeholder="Score" id="score"><br><br>
-      <input type="text" placeholder="Image URL" id="avatar"><br><br>
-      <button class="btn btn-success" onClick="addStudent()">Lưu</button>
-    </div>
+ <h2>Nhập thông tin tài khoản</h2>
+      <div>
+        <table>
+          <tr>
+            <th><label for="mySelect">Tài khoản đăng nhập:</label></th>
+            <th>
+              <input type="text" placeholder="ID đăng nhập" id="loginAcc" />
+            </th>
+          </tr>
+          <tr>
+            <th><label for="mySelect">Mật khẩu:</label></th>
+            <th><input type="text" placeholder="Mật khẩu" id="loginPass" /></th>
+          </tr>
+          <tr>
+            <th><label for="mySelect">Quyền truy cập:</label></th>
+            <th>
+              <select id="role" name="Quyền">
+                <option value="admin">Giảng viên (admin)</option>
+                <option value="user">Sinh viên (user)</option>
+              </select>
+            </th>
+          </tr>
+          <tr>
+            <th><label for="mySelect">Tên chủ tài khoản:</label></th>
+            <th><input type="text" placeholder="Tên" id="name" /></th>
+          </tr>
+        </table>
+        <button class="btn btn-success" onClick="addAccount()">Lưu</button>
+      </div>
+
   `;
+}
+
+function navigateToAdd2() {
+  document.getElementById("ui").innerHTML = `
+        <h2>Nhập thông tin tài khoản</h2>
+        <table>
+          <tr>
+            <th><label for="mySelect">Tài khoản liên kết:</label></th>
+            <td>
+              <input type="text" placeholder="ID đăng nhập" id="linkedAccount" />
+            </td>
+            <td>
+              <button class="btn btn-success" onClick="addInfroAcc()">Nhập</button>
+            </td>
+          </tr>
+        </table>
+
+        <div id="ui1"></div>
+    `;
+}
+
+function addInfroAcc() {
+  let checkAcc = document.getElementById("linkedAccount").value;
+  if (!checkAccId) {
+    alert("Không tìm thấy ID tài khoản.");
+    return;
+  }
+
+  for (let i = 0; i < accounts.length; i++) {
+    if (accounts[i].id == checkAcc) {
+      if (accounts[i].role === "user") {
+        document.getElementById("ui1").innerHTML = `
+     <h3>Nhập thông tin sinh viên</h3>
+        <table>
+          <tr>
+            <th><label for="mySelect">Tên sinh viên</label></th>
+            <td>${accounts[i].name}</td>
+          </tr>
+          <tr>
+            <th><label for="mySelect">Khoa</label></th>
+            <td><input type="text" placeholder="Khoa" id="faculty" /></td>
+          </tr>
+          <tr>
+            <th><label for="mySelect">Lớp</label></th>
+            <td><input type="text" placeholder="Lớp" id="grade" /></td>
+          </tr>
+          <tr>
+            <th><label for="mySelect">Điểm trung bình</label></th>
+            <td>
+              <input type="number" placeholder="Điểm trung bình" id="score" />
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <label for="mySelect">Ảnh đại diện</label>
+            </th>
+            <td>
+              <input
+                type="text"
+                placeholder="Image URL"
+                id="avatar"
+              /><br /><br />
+            </td>
+          </tr>
+        </table>
+        <button class="btn btn-success" onClick="addStudent()">Lưu</button>
+            `;
+      } else if (accounts[i].role === "admin") {
+        document.getElementById("ui1").innerHTML = `
+        <h3>Nhập thông tin giảng viên</h3>
+        <table>
+          <tr>
+            <th><label for="mySelect">Tên giảng viên</label></th>
+            <td>${accounts[i].name}</td>
+          </tr>
+          <tr>
+            <th><label for="mySelect">Khoa</label></th>
+            <td><input type="text" placeholder="Khoa" id="faculty" /></td>
+          </tr>
+          <tr>
+            <th>
+              <label for="mySelect">Ảnh đại diện</label>
+            </th>
+            <td>
+              <input type="text" placeholder="Image URL" id="avatar" />
+            </td>
+          </tr>
+        </table>
+        <button class="btn btn-success" onClick="addTeacher()">Lưu</button>
+          `;
+      }
+    }
+  }
 }
 
 navigateToHome();

@@ -17,6 +17,9 @@ lưu lại thông tin đăng nhập người dùng để khi back
 tác giao diện
 không cho trùng ID
 
-admin có thể tạo tài khoản cho học sinh
+admin quản lý tài khoản
+thông tin tài khoản riêng.
+
+có thể tạo tài khoản cho học sinh
 admin tạo khoá học
 SV đăng ký khoá học
