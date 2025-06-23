@@ -47,27 +47,51 @@ function handleLogin() {
   }
 }
 
+// function updateHeader() {
+//   let headerDiv = document.getElementById("headerRight");
+//   let addButton = document.querySelector('[onclick="navigateToAdd()"]');
+//   if (currentUser) {
+//     headerDiv.innerHTML = `
+//       <button class="me-2" onclick="showInformation()">👤 ${currentUserName}</button>
+//       <button class="btn btn-outline-danger btn-sm" onclick="logout()">Đăng xuất</button>
+//     `;
+//   } else {
+//     headerDiv.innerHTML = `
+//       <button class="btn btn-outline-primary me-2" onclick="showLoginModal()">
+//         <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
+//       </button>
+//     `;
+//   }
+//   if (addButton) {
+//     if (currentRole === "admin") {
+//       addButton.style.display = "inline-block";
+//     } else {
+//       addButton.style.display = "none";
+//     }
+//   }
+// }
+
 function updateHeader() {
   let headerDiv = document.getElementById("headerRight");
-  let addButton = document.querySelector('[onclick="navigateToAdd()"]');
+  let adminMenu = document.getElementById("adminMenu");
+
   if (currentUser) {
     headerDiv.innerHTML = `
       <button class="me-2" onclick="showInformation()">👤 ${currentUserName}</button>
       <button class="btn btn-outline-danger btn-sm" onclick="logout()">Đăng xuất</button>
     `;
+    if (currentRole === "admin") {
+      adminMenu.style.display = "block"; // hiện menu nếu là admin
+    } else {
+      adminMenu.style.display = "none"; // ẩn nếu không phải admin
+    }
   } else {
     headerDiv.innerHTML = `
       <button class="btn btn-outline-primary me-2" onclick="showLoginModal()">
         <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
       </button>
     `;
-  }
-  if (addButton) {
-    if (currentRole === "admin") {
-      addButton.style.display = "inline-block";
-    } else {
-      addButton.style.display = "none";
-    }
+    adminMenu.style.display = "none"; // ẩn khi chưa đăng nhập
   }
 }
 
@@ -96,8 +120,32 @@ function addAccount() {
   let pass = document.getElementById("loginPass").value;
   let name = document.getElementById("name").value;
   let role = document.getElementById("role").value;
+
+  if (!acc || !pass || !name) {
+    alert("Vui lòng nhập đầy đủ thông tin!");
+    return;
+  }
+
+  for (let i = 0; i < accounts.length; i++) {
+    if (accounts[i].id == acc) {
+      alert("Tài khoản đã tồn tại, vui lòng tạo tài khoản khác");
+      return;
+    }
+  }
+
   accounts.push({ id: acc, pass: pass, name: name, role: role });
+  checkAccId = acc;
+  //   localStorage.setItem("checkAccId", acc);
   console.log(accounts);
+
+  if (
+    confirm(
+      "✅ Đã tạo tài khoản thành công!\n\nNhấn OK để nhập thông tin chi tiết."
+    )
+  ) {
+    navigateToAdd2();
+    addInfroAcc();
+  }
 }
 
 // function addStudent() {
@@ -128,6 +176,6 @@ window.onload = function () {
   } else {
     document.getElementById("mainApp").style.display = "none";
   }
-
+  //   checkAccId = localStorage.getItem("checkAccId");
   updateHeader();
 };

@@ -1,6 +1,8 @@
 let myGrade = new Grade(1, "Đại học A");
 console.log("myGrade", myGrade);
 
+let checkAccId = null;
+
 function getAll(list) {
   // nhận vào 1 mảng student => có gì thì hiển thị đó
   let html = ``;
@@ -28,17 +30,43 @@ function getAll(list) {
   document.getElementById("list_student").innerHTML = html;
 }
 
+function getAll2(list2) {
+  // nhận vào 1 mảng teacher => có gì thì hiển thị đó
+  let html = ``;
+  for (let i = 0; i < list2.length; i++) {
+    let teacher = list2[i]; // lấy ra từng eacher
+    html += `
+                 <tr>
+                    <td>${teacher.id}</td>
+                    <td>${teacher.name}</td>
+                    <td>${teacher.faculty}</td>
+                    <td><img src="${
+                      teacher.avatar || "https://via.placeholder.com/80"
+                    }" class="img-fluid rounded" style="width:80px; height:80px; object-fit:cover;"></td>
+                    ${
+                      currentRole === "admin"
+                        ? `<td><button onClick="deleteteacher(${teacher.id})">Xóa</button></td>
+                        <td><button onClick="navigateToUpdate(${teacher.id})">Sửa</button></td>`
+                        : `<td colspan="2">-</td>`
+                    }
+                </tr>
+        `;
+  }
+  document.getElementById("list_teacher").innerHTML = html;
+}
+
 function search() {
   let nameSearch = document.getElementById("search-name").value;
-  let gradeFaculty = document.getElementById("search-faculty").value;
+  let facultySearch = document.getElementById("search-faculty").value;
   let gradeSearch = document.getElementById("search-grade").value;
   let scoreStart = +document.getElementById("score-start").value;
   let scoreEnd = +document.getElementById("score-end").value;
   if (!scoreStart) scoreStart = -Infinity;
   if (!scoreEnd) scoreEnd = Infinity;
+
   let list = myGrade.getListSearch(
     nameSearch,
-    gradeFaculty,
+    facultySearch,
     gradeSearch,
     scoreStart,
     scoreEnd
@@ -46,43 +74,103 @@ function search() {
   getAll(list);
 }
 
+function searchTeacher() {
+  let nameSearch = document.getElementById("search-teacher-name").value;
+  let facultySearch = document.getElementById("search-teacher-faculty").value;
+  let list2 = myGrade.getListTeacher(nameSearch, facultySearch);
+
+  getAll2(list2);
+}
+
 function navigateToHome() {
   document.getElementById("ui").innerHTML = `
-      <h2>Danh sách sinh viên</h2>
-      <input type="text" placeholder="Tìm tên" id="search-name" oninput="search()"
-      />
-      <input type="text" placeholder="Tìm khoa" id="search-faculty" oninput="search()"
-      />
-      <input type="text" placeholder="Tìm lớp" id="search-grade" oninput="search()"
-      />
+    <h2 class="mb-4">Chọn danh sách muốn xem</h2>
+    <div class="d-flex gap-3 justify-content-center">
+      <button class="btn btn-primary" onclick="showStudentList()">Danh sách sinh viên</button>
+      <button class="btn btn-secondary" onclick="showTeacherList()">Danh sách giảng viên</button>
+    </div>
+    <div id="home-content" class="mt-4"></div>
+  `;
 
-      <input
-        type="number" placeholder="Điểm tối thiểu" id="score-start" oninput="search()"
-      />
-      <input
-        type="number" placeholder="điểm tối đa" id="score-end" oninput="search()"
-      />
-      <br />
-      <br />
-      <table class="table table-bordered text-center align-middle" style="table-layout:fixed;">
-        <thead class="table-light">
-         <tr>
-            <th style="width:10px;">ID</th>
-            <th style="width:100px;">Tên</th>
-            <th style="width:25px;">Khoa</th>
-            <th style="width:25px;">Lớp</th>
-            <th style="width:40px;">Điểm</th>
-            <th style="width:100px;">Ảnh đại diện</th>
-            <th style="width:60px;" colspan="2">Chỉnh sửa</th>
+  showStudentList();
+}
+
+function showStudentList() {
+  document.getElementById("home-content").innerHTML = `
+    <h3>Danh sách sinh viên</h3>
+    <input type="text" placeholder="Tìm tên" id="search-name" oninput="search()"/>
+    <input type="text" placeholder="Tìm khoa" id="search-faculty" oninput="search()"/>
+    <input type="text" placeholder="Tìm lớp" id="search-grade" oninput="search()"/>
+    <input type="number" placeholder="Điểm tối thiểu" id="score-start" oninput="search()"/>
+    <input type="number" placeholder="Điểm tối đa" id="score-end" oninput="search()"/>
+    <br /><br />
+    <table class="table table-bordered text-center align-middle" style="table-layout:fixed;">
+      <thead class="table-light">
+        <tr>
+          <th style="width:10px;">ID</th>
+          <th style="width:100px;">Tên</th>
+          <th style="width:25px;">Khoa</th>
+          <th style="width:25px;">Lớp</th>
+          <th style="width:40px;">Điểm</th>
+          <th style="width:100px;">Ảnh đại diện</th>
+          <th style="width:60px;" colspan="2">Chỉnh sửa</th>
         </tr>
-        </thead>
-        <tbody id="list_student"></tbody>
-      </table>
-    `;
+      </thead>
+      <tbody id="list_student"></tbody>
+    </table>
+  `;
+
   myGrade.getDataInStorage();
-  let list = myGrade.getListStudent(); // Mảng Student
-  console.log("list", list);
+  let list = myGrade.getListStudent();
   getAll(list);
+}
+
+function showTeacherList() {
+  //   if (teacherData.length === 0) {
+  //     document.getElementById(
+  //       "home-content"
+  //     ).innerHTML = `<p>Không có dữ liệu giảng viên.</p>`;
+  //     return;
+  //   }
+
+  //   let html = `
+  document.getElementById("home-content").innerHTML = `
+    <h3>Danh sách giảng viên</h3>
+     <input type="text" placeholder="Tìm tên" id="search-teacher-name" oninput="searchTeacher()"/>
+    <input type="text" placeholder="Tìm khoa" id="search-teacher-faculty" oninput="searchTeacher()"/>
+    <br/><br/>
+    <table class="table table-bordered text-center align-middle" style="table-layout:fixed;">
+      <thead class="table-light">
+        <tr>
+          <th style="width:10px;">ID</th>
+          <th style="width:120px;">Tên</th>
+          <th style="width:100px;">Khoa</th>
+          <th style="width:100px;">Ảnh đại diện</th>
+          <th style="width:60px;" colspan="2">Chỉnh sửa</th>
+        </tr>
+      </thead>
+      <tbody id="list_teacher"></tbody>
+    </table>
+  `;
+
+  //   for (let teacher of teacherData) {
+  //     html += `
+  //       <tr>
+  //         <td>${teacher.id}</td>
+  //         <td>${teacher.name}</td>
+  //         <td>${teacher.faculty}</td>
+  //         <td><img src="${
+  //           teacher.avatar || "https://via.placeholder.com/80"
+  //         }" class="img-fluid rounded" style="width:80px; height:80px; object-fit:cover;"></td>
+  //       </tr>
+  //     `;
+  //   }
+
+  //   html += `</tbody></table>`;
+  //   document.getElementById("home-content").innerHTML = html;
+  myGrade.getDataInStorage();
+  let list2 = myGrade.getListTeacher();
+  getAll2(list2);
 }
 
 function addStudent() {
@@ -110,6 +198,33 @@ function addStudent() {
   }
   let p = new Student(id, name, faculty, grade, score, avatar);
   myGrade.add(p);
+  checkAccId = null;
+  //   localStorage.removeItem("checkAccId");
+  navigateToHome();
+}
+
+function addTeacher() {
+  myGrade.getDataInStorage();
+  let list2 = myGrade.getListTeacher();
+
+  let id = list2.length + 1;
+  let name = "";
+  for (let i = 0; i < accounts.length; i++) {
+    if (accounts[i].id === checkAccId) {
+      name = accounts[i].name;
+      break;
+    }
+  }
+
+  if (!name) {
+    alert("Không tìm thấy tên cho tài khoản này!");
+    return;
+  }
+  let faculty = document.getElementById("faculty").value;
+  let avatar = document.getElementById("avatar").value;
+  let p = new Teacher(id, name, faculty, avatar);
+  myGrade.addTeacher(p);
+  checkAccId = null;
   navigateToHome();
 }
 
@@ -160,7 +275,7 @@ function navigateToUpdate(id) {
 
 function navigateToAdd() {
   document.getElementById("ui").innerHTML = `
- <h2>Nhập thông tin tài khoản</h2>
+ <h2>Tạo tài khoản</h2>
       <div>
         <table>
           <tr>
@@ -193,41 +308,46 @@ function navigateToAdd() {
   `;
 }
 
+// function navigateToAdd2() {
+//   document.getElementById("ui").innerHTML = `
+//         <h2>Nhập thông tin tài khoản</h2>
+//         <table>
+//           <tr>
+//             <th><label for="mySelect">Tài khoản liên kết:</label></th>
+//             <td>
+//               <input type="text" placeholder="ID đăng nhập" id="linkedAccount" />
+//             </td>
+//             <td>
+//               <button class="btn btn-success" onClick="addInfroAcc()">Nhập</button>
+//             </td>
+//           </tr>
+//         </table>
+
+//         <div id="ui1"></div>
+//     `;
+// }
+
 function navigateToAdd2() {
   document.getElementById("ui").innerHTML = `
         <h2>Nhập thông tin tài khoản</h2>
-        <table>
-          <tr>
-            <th><label for="mySelect">Tài khoản liên kết:</label></th>
-            <td>
-              <input type="text" placeholder="ID đăng nhập" id="linkedAccount" />
-            </td>
-            <td>
-              <button class="btn btn-success" onClick="addInfroAcc()">Nhập</button>
-            </td>
-          </tr>
-        </table>
-
         <div id="ui1"></div>
     `;
 }
 
 function addInfroAcc() {
-  let checkAcc = document.getElementById("linkedAccount").value;
   if (!checkAccId) {
-    alert("Không tìm thấy ID tài khoản.");
+    alert("Không xác định được tài khoản.");
     return;
   }
+  let found = accounts.find((acc) => acc.id === checkAccId);
 
-  for (let i = 0; i < accounts.length; i++) {
-    if (accounts[i].id == checkAcc) {
-      if (accounts[i].role === "user") {
-        document.getElementById("ui1").innerHTML = `
+  if (found.role === "user") {
+    document.getElementById("ui1").innerHTML = `
      <h3>Nhập thông tin sinh viên</h3>
         <table>
           <tr>
             <th><label for="mySelect">Tên sinh viên</label></th>
-            <td>${accounts[i].name}</td>
+            <td>${found.name}</td>
           </tr>
           <tr>
             <th><label for="mySelect">Khoa</label></th>
@@ -258,13 +378,13 @@ function addInfroAcc() {
         </table>
         <button class="btn btn-success" onClick="addStudent()">Lưu</button>
             `;
-      } else if (accounts[i].role === "admin") {
-        document.getElementById("ui1").innerHTML = `
+  } else if (found.role === "admin") {
+    document.getElementById("ui1").innerHTML = `
         <h3>Nhập thông tin giảng viên</h3>
         <table>
           <tr>
             <th><label for="mySelect">Tên giảng viên</label></th>
-            <td>${accounts[i].name}</td>
+            <td>${found.name}</td>
           </tr>
           <tr>
             <th><label for="mySelect">Khoa</label></th>
@@ -281,8 +401,6 @@ function addInfroAcc() {
         </table>
         <button class="btn btn-success" onClick="addTeacher()">Lưu</button>
           `;
-      }
-    }
   }
 }
 
