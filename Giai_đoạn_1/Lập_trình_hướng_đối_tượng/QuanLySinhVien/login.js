@@ -179,3 +179,5 @@ window.onload = function () {
   //   checkAccId = localStorage.getItem("checkAccId");
   updateHeader();
 };
+
+console.log(accounts);
