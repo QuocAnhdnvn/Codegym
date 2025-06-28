@@ -10,18 +10,58 @@
       <h1>Ngân hàng ABC</h1>
       <h2>Quản lý sổ tiết kiệm</h2>
 
-      <div>
-        <label>Mã sổ: <input id="maSo" maxlength="5" /></label><br />
-        <label>Loại tiết kiệm: <input id="loaiTietKiem" maxlength="10" /></label
-        ><br />
-        <label>Họ tên khách hàng: <input id="hoTen" maxlength="30" /></label
-        ><br />
-        <label>CMND: <input id="cmnd" /></label><br />
-        <label
-          >Ngày mở sổ: <input id="ngayMoSo" placeholder="YYYY-MM-DD" /></label
-        ><br />
-        <label>Số tiền gửi: <input id="soTienGui" /></label><br />
-        <button onclick="themSOTIETKIEM()">Thêm sổ tiết kiệm</button>
+      <div style="width: 450px; margin-bottom: 16px">
+        <table style="border-collapse: collapse; width: 100%">
+          <tr>
+            <td style="padding: 6px; text-align: right; width: 160px">
+              Mã sổ:
+            </td>
+            <td style="padding: 6px">
+              <input id="maSo" maxlength="5" style="width: 220px" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 6px; text-align: right">Loại tiết kiệm:</td>
+            <td style="padding: 6px">
+              <input id="loaiTietKiem" maxlength="10" style="width: 220px" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 6px; text-align: right">Họ tên khách hàng:</td>
+            <td style="padding: 6px">
+              <input id="hoTen" maxlength="30" style="width: 220px" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 6px; text-align: right">CMND:</td>
+            <td style="padding: 6px">
+              <input id="cmnd" style="width: 220px" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 6px; text-align: right">Ngày mở sổ:</td>
+            <td style="padding: 6px">
+              <input id="ngayMoSo" type="date" style="width: 220px" />
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 6px; text-align: right">Số tiền gửi:</td>
+            <td style="padding: 6px">
+              <input id="soTienGui" style="width: 220px" />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div style="width: 450px; margin-bottom: 16px">
+        <table>
+          <tr>
+            <td></td>
+            <td style="padding: 6px">
+              <button onclick="themSOTIETKIEM()">Thêm sổ tiết kiệm</button>
+              <button onclick="xoaSOTIETKIEM()">Xóa sổ tiết kiệm</button>
+            </td>
+          </tr>
+        </table>
       </div>
       <div id="thongBao" style="color: red"></div>
       <table id="danhsach" border="1">
