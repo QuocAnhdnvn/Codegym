@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý sổ tiết kiệm</title>
+  </head>
+  <body>
+    <center>
+      <h1>Ngân hàng ABC</h1>
+      <h2>Quản lý sổ tiết kiệm</h2>
+
+      <div>
+        <label>Mã sổ: <input id="maSo" maxlength="5" /></label><br />
+        <label>Loại tiết kiệm: <input id="loaiTietKiem" maxlength="10" /></label
+        ><br />
+        <label>Họ tên khách hàng: <input id="hoTen" maxlength="30" /></label
+        ><br />
+        <label>CMND: <input id="cmnd" /></label><br />
+        <label
+          >Ngày mở sổ: <input id="ngayMoSo" placeholder="YYYY-MM-DD" /></label
+        ><br />
+        <label>Số tiền gửi: <input id="soTienGui" /></label><br />
+        <button onclick="themSOTIETKIEM()">Thêm sổ tiết kiệm</button>
+      </div>
+      <div id="thongBao" style="color: red"></div>
+      <table id="danhsach" border="1">
+        <thead>
+          <tr>
+            <th>Mã sổ</th>
+            <th>Loại tiết kiệm</th>
+            <th>Họ tên</th>
+            <th>CMND</th>
+            <th>Ngày mở sổ</th>
+            <th>Số tiền gửi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dữ liệu sẽ được điền bằng JS -->
+        </tbody>
+        <button onclick="xoaSOTIETKIEM()">Xóa sổ tiết kiệm</button>
+      </table>
+    </center>
+
+    <script src="index.js"></script>
+    <script src="stk.js"></script>
+  </body>
+</html>
