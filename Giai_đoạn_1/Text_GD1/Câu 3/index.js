@@ -1,4 +1,5 @@
 let danhSachSo = [];
+loadFromStorage();
 
 function validateSOTIETKIEM(
   maSo,
@@ -89,6 +90,7 @@ function themSOTIETKIEM() {
     "thongBao"
   ).innerHTML = `<p>Thêm sổ tiết kiệm thành công!</p>`;
   hienThiDanhSachSo();
+  saveToStorage();
 }
 
 function hienThiDanhSachSo() {
@@ -133,7 +135,21 @@ function xoaSOTIETKIEM() {
       danhSachSo.splice(index, 1);
       alert("Đã xóa sổ tiết kiệm thành công!");
       hienThiDanhSachSo();
+      saveToStorage();
     }
     break;
+  }
+}
+
+function saveToStorage() {
+  localStorage.setItem("danhSachSo", JSON.stringify(danhSachSo));
+}
+
+function loadFromStorage() {
+  const data = localStorage.getItem("danhSachSo");
+  if (data) {
+    // Parse lại thành object
+    danhSachSo = JSON.parse(data);
+    hienThiDanhSachSo();
   }
 }
